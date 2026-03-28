@@ -132,10 +132,7 @@ func toAPIRRsets(recs []libdns.Record, zone string, changeType string) []apiRRse
 
 		if _, exists := grouped[key]; !exists {
 			ttl := int(rr.TTL / time.Second)
-			var ttlPtr *int
-			if rr.TTL > 0 {
-				ttlPtr = &ttl
-			}
+			ttlPtr := &ttl
 			grouped[key] = &apiRRset{
 				Name:       fqdn,
 				Type:       rr.Type,
